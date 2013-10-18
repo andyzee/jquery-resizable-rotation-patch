@@ -1,0 +1,2 @@
+jquery-resizable-rotation-patch
+===============================
