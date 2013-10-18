@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Resizable sandbox</title>
+  <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" /-->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="./resizable-rotation.patch.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    #resizable { width: 150px; height: 150px; padding: 0.5em; }
+    #resizable h3 { text-align: center; margin: 0; }
+    .inner {width:100%; height:100%; display:block; background-repeat: no-repeat; background-position: 0 0; background-size: 100% 100%;}
+    .ui-resizable-handle {border:1px solid black; width:9px; height:9px; position:absolute; background: #fff;}
+    .ui-resizable-ne {right:-5px; top:-5px;}
+    .ui-resizable-nw {left:-5px; top:-5px;}
+    .ui-resizable-se {right:-5px; bottom:-5px;}
+    .ui-resizable-sw {left:-5px; bottom:-5px;}
+  </style>
+  <script>
+  $(function() {
+    var angle = 0;
+
+    $("#resizable").resizable({ handles: "ne, nw, se, sw"});
+    $("#resizable").draggable();
+    $("#resizable").click(function(){
+      angle += 45;
+      $(this).css({
+          transform: 'rotate('+ angle +'deg)'
+        });
+    });
+  });
+  </script>
+</head>
+<body>
+  <div id="resizable" style="border:1px dotted gray;">
+    <div class="inner" style="background-image: url(https://www.google.ru/images/srpr/logo11w.png)">
+    </div>
+  </div>
+</body>
+</html>
